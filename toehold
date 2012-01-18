@@ -12,7 +12,7 @@ cd $HOME
 git clone git://github.com/FireworksProject/web_server.git || \
     echo "failed to download web_server repository: try again"
 
-web_server/bin/bootstrap_ubuntu || \
+sudo web_server/bin/bootstrap_ubuntu || \
     echo "failed to install ubuntu packages: try again"
 
 echo "OK - toehold is done"
