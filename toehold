@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo apt-get install git-core
+sudo apt-get install -y git-core
 
 localdir="$HOME/web_server"
 
@@ -9,8 +9,10 @@ if [ -d "$localdir" ]; then
 fi
 
 cd $HOME
-git clone git@github.com:FireworksProject/web_server.git
+git clone git@github.com:FireworksProject/web_server.git || \
+    echo "failed to download web_server repository: try again" && exit 1
 
-web_server/bin/bootstrap_ubuntu
+web_server/bin/bootstrap_ubuntu || \
+    echo "failed to install ubuntu packages: try again" && exit 1
 
 echo "OK - toehold is done"
