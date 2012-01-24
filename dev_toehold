@@ -1,0 +1,44 @@
+#!/bin/bash
+
+if [ -z $HOST_IP ]; then
+    echo "HOST_IP is required. Try again."
+    exit 1
+fi
+
+if [ -z $HOST_USER ]; then
+    echo "HOST_USER is required. Try again."
+    exit 1
+fi
+
+src="$HOST_USER@$HOST_IP"
+
+# Setup SSH keys
+if ! [ -d "$HOME/.ssh" ]; then
+    mkdir -p -- "$HOME/.ssh"
+fi
+chmod 700 "$HOME/.ssh"
+
+scp "$src:~/.ssh/id_rsa*" "$HOME/.ssh/"
+scp "$src:~/.ssh/config" "$HOME/.ssh/"
+chmod 600 "$HOME/.ssh/*"
+
+scp "$src:~/.gitconfig" "$HOME/"
+
+# Install git
+sudo apt-get install -y git-core
+
+# clone the development repository
+localdir="$HOME/web_server"
+
+if [ -d "$localdir" ]; then
+    rm -rf "$localdir"
+fi
+
+cd "$HOME"
+git clone git@github.com:FireworksProject/web_server.git || \
+    echo "failed to download web_server repository: try again"
+
+sudo "$HOME/web_server/bin/bootstrap_ubuntu" || \
+    echo "failed to install ubuntu packages: try again"
+
+echo "OK - dev_toehold is done"
