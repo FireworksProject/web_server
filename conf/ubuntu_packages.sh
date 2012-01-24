@@ -1,4 +1,5 @@
 UBUNTU_PACKAGES="\
+autoconf \
 openssh-server \
 openssh-client \
 build-essential \
