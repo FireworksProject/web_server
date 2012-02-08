@@ -95,3 +95,12 @@ host machine to the development VM.
     scp username@$HOST_IP:~/.gitconfig ~/
 
 where `$HOST_IP` is the address of your local host machine.
+
+Node.js
+-------
+First, make sure the `web_server` repository is up to date, then just run the
+install script.
+
+    cd ~/web_server
+    git pull origin master
+    bin/install_node
