@@ -1,0 +1,11 @@
+#!/bin/bash
+THISDIR="$(cd `dirname "$0"` && pwd)"
+ROOTDIR="$( dirname "$THISDIR" )"
+LIBDIR="$ROOTDIR/lib"
+
+source "$LIBDIR/utils.sh"
+
+"$THISDIR/install_node" || \
+    fail "Unable to install Node.js"
+
+sudo mkdir --parents "/srv/http/platform.x/applications"
