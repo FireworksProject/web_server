@@ -3,9 +3,19 @@ THISDIR="$(cd `dirname "$0"` && pwd)"
 ROOTDIR="$( dirname "$THISDIR" )"
 LIBDIR="$ROOTDIR/lib"
 
+APPDIR="/srv/http/platform.x/applications"
+
 source "$LIBDIR/utils.sh"
 
 "$THISDIR/install_node" || \
     fail "Unable to install Node.js"
 
-sudo mkdir --parents "/srv/http/platform.x/applications"
+sudo addgroup nodeserver
+sudo adduser ubuntu nodeserver || \
+    fail "The ubuntu user must exist on this system."
+
+sudo mkdir --parents $APPDIR
+sudo chgrp nodeserver $APPDIR
+sudo chmod 775 $APPDIR
+
+echo "You must log out and log back in again for these changes to take affect."
