@@ -1,6 +1,7 @@
 Web Server Development Environment
 ==================================
 
+
 Virtual Machine (on VirtualBox)
 -------------------------------
 ### Create Machine
@@ -27,7 +28,6 @@ These are the system settings, per tab, on VirtualBox, for this machine.
 
 Install Ubuntu 10.04.3 Server Edition
 -------------------------------------
-
 Download an Ubuntu install disk image (.iso file) and simply mount it to the
 CDROM drive on the virtual machine (in the Storage tab on the machine
 settings).  Make sure the boot device priority order is set start with
@@ -35,7 +35,6 @@ CD/DVD-ROM (in the System tab on the machine settings) and then start the
 machine.
 
 ### Ubuntu Install Notes
-
 * Partitioning: Guided - use entire disk (no need for Logical Volume Management)
 * Use "ubuntu" as the username.
 * Create a strong password since the machine is going to make itself available on the Internet.
@@ -47,7 +46,6 @@ Let the VM reboot after Ubuntu installation and then log into it.
 
 SSH Setup
 ---------
-
 While logged into the VM, create the .ssh dir, and get the IP address of the VM
 on the local network with
 
@@ -68,11 +66,32 @@ address of the VM.
 
 System Setup
 ------------
+First, log onto the VM in an SSH terminal from your local host machine.  Then,
+use wget to grab the toehold script and bootstrap the production system.
 
-Use wget to grab the toehold script and bootstrap the production system.
-
-    wget https://github.com/FireworksProject/web_server/raw/master/dev_toehold
+    wget https://github.com/FireworksProject/web_server/raw/master/toehold
 
 That will copy over your SSH keys from the host machine, install git, clone
 this repository from GitHub, and install the required Ubuntu packages with
 apt-get.
+
+When this is done running, restart the machine (to enable the new Linux kernel).
+
+
+Dotfiles
+--------
+This step is optional, but really nice to have for development purposes.
+
+    cd ~
+    git clone git@github.com:FireworksProject/dotfiles.git
+
+Follow the README instruction in the dotfiles repo then:
+
+    source ~/.bashrc
+
+Then, you'll probably want to transfer your .gitconfig file from your local
+host machine to the development VM.
+
+    scp username@$HOST_IP:~/.gitconfig ~/
+
+where `$HOST_IP` is the address of your local host machine.
