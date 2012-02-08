@@ -23,6 +23,16 @@ main () {
 
     installed_version=$( node --version )
     echo "Node.js $installed_version installed"
+
+    echo 'Checking for CoffeeScript ...'
+    local coffeescript=$( coffee --version )
+
+    if [ -z "$coffeescript" ]; then
+        sudo npm install --global coffee-script
+        coffeescript=$( coffee --version )
+    fi
+
+    echo "$coffeescript installed"
 }
 
 install_node () {
@@ -43,6 +53,7 @@ fetch_node () {
     local url="http://nodejs.org/dist/$version/node-$version.tar.gz"
     echo "Fetching Node.js from $url"
 
+    rm -rf "$NODEDIR"
     ensure_dir "$NODEDIR"
 
     curl -# -L "$url" \
