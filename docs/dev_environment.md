@@ -96,8 +96,8 @@ host machine to the development VM.
 where `$HOST_IP` is the address of your local host machine.
 
 
-Setup the Node.js Infrastructure
---------------------------------
+Setup the Node.js Stack
+-----------------------
 First, make sure the `web_server` repository is up to date, then just run the
 setup script.
 
@@ -105,3 +105,16 @@ setup script.
     git pull origin master
     bin/setup_node_platform
 
+
+Setup the LAMP Stack
+--------------------
+
+    cd ~/web_server
+    git pull origin master
+    bin/setup_LAMP_stack
+
+This will install Apache, MySQL, PHP, and PHPMyAdmin. Along the way it will ask
+for a new password for the root MySQL user. This should be recorded somewhere
+in the Fireworks Project password database, so be sure to use the already
+recorded password. Also, during PHPMyAdmin setup, choose the Apache server
+setup option, and then deny the automatic database setup tool.
