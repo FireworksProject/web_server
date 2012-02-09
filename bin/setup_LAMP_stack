@@ -1,0 +1,22 @@
+#!/bin/bash
+THISDIR="$(cd `dirname "$0"` && pwd)"
+ROOTDIR="$( dirname "$THISDIR" )"
+LIBDIR="$ROOTDIR/lib"
+APACHE="$ROOTDIR/apache"
+
+SRVDIR="/var/www"
+
+source "$LIBDIR/utils.sh"
+
+sudo apt-get install -y apache2 || fail "Unable to install Apache"
+sudo apt-get install -y mysql-server || fail "Unable to install MySQL"
+sudo apt-get install -y php5 libapache2-mod-php5 php5-mysql || \
+    fail "Unable to isntall PHP 5"
+
+sudo /etc/init.d/apache2 restart || fail "Unable to restart Apache"
+
+sudo apt-get install -y phpmyadmin || fail "Unable to install PHPMyAdmin"
+
+sudo cp "$APACHE/php_info.php" "$SRVDIR/php_info.php"
+sudo chmod 700 $SRVDIR
+sudo chown -R www-data:www-data $SRVDIR
