@@ -15,5 +15,7 @@ rsync \
     --times \
     --progress \
     --human-readable \
+    --exclude=***.swp \
     --delete \
+    --delete-excluded \
     "$SRC" "$SRVDIR/"
