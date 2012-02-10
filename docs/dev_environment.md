@@ -118,3 +118,11 @@ for a new password for the root MySQL user. This should be recorded somewhere
 in the Fireworks Project password database, so be sure to use the already
 recorded password. Also, during PHPMyAdmin setup, choose the Apache server
 setup option, and then deny the automatic database setup tool.
+
+After this is all done, point a web browser to
+`http://192.168.1.100/phpmyadmin` (where 192.168.1.100 should be replaced with
+the IP address of your running VM) and create the MySQL application user in the
+privileges tab.  Again, the username and password should be recorded somewhere
+in the Fireworks Project password database, so bue sure to use the already
+recorded username and password. This user should have all "data" and
+"structure" privileges.
