@@ -1,0 +1,19 @@
+#!/bin/bash
+SRVDIR="/var/www"
+
+if [ -z $1 ]; then
+    echo "The source directory path is the only required argument"
+    exit 1
+fi
+
+SRC=`echo "$1" | sed -e "s/\/*$//"`
+
+rsync \
+    --recursive \
+    --links \
+    --perms \
+    --times \
+    --progress \
+    --human-readable \
+    --delete \
+    "$SRC" "$SRVDIR/"
