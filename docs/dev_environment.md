@@ -58,11 +58,11 @@ file used to access GitHub, which will be needed to clone the `web_server`
 repository onto the VM.  So, back on your local host machine, use scp to copy
 your private key to the VM.
 
-    scp ~/.ssh/$YOUR_KEY ubuntu@$VM_IP:~/.ssh/
+    scp ~/.ssh/$YOUR_KEY* ubuntu@$VM_IP:~/.ssh/
     scp ~/.ssh/config ubuntu@$VM_IP:~/.ssh/
 
 where `$YOUR_KEY` is probably something like `id_rsa` and `$VM_IP` is the IP
-address of the VM.
+address of the VM. Make sure both the private and public keys are copied.
 
 
 System Setup
