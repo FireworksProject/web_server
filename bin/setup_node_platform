@@ -11,10 +11,8 @@ source "$LIBDIR/utils.sh"
 "$THISDIR/install_node" || \
     fail "Unable to install Node.js"
 
-sudo useradd --system nodeserver
+sudo useradd --system --user-group nodeserver
 
 sudo mkdir --parents $APPDIR
 sudo chown -R nodeserver:nodeserver $PLATFORM
 sudo chmod 770 $PLATFORM
-
-echo "You must log out and log back in again for these changes to take affect."
