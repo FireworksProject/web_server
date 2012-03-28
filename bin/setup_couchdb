@@ -6,8 +6,6 @@ COUCHBIN="/opt/couchdb"
 "$THISDIR/install_couchdb" || \
     fail "Unable to install CouchDB"
 
-sudo useradd --system couchdb
+sudo useradd --system --user-group couchdb
 
 sudo chown -R couchdb:couchdb $COUCHBIN
-
-echo "You must log out and log back in again for these changes to take affect."
