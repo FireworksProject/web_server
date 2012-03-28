@@ -58,11 +58,11 @@ file used to access GitHub, which will be needed to clone the `web_server`
 repository onto the VM.  So, back on your local host machine, use scp to copy
 your private key to the VM.
 
-    scp ~/.ssh/$YOUR_KEY ubuntu@$VM_IP:~/.ssh/
+    scp ~/.ssh/$YOUR_KEY* ubuntu@$VM_IP:~/.ssh/
     scp ~/.ssh/config ubuntu@$VM_IP:~/.ssh/
 
 where `$YOUR_KEY` is probably something like `id_rsa` and `$VM_IP` is the IP
-address of the VM.
+address of the VM. Make sure both the private and public keys are copied.
 
 
 System Setup
@@ -71,7 +71,9 @@ After copying your SSH key and config file, log onto the VM in an SSH terminal
 from your local host machine.  Then, use wget to grab the toehold script and
 bootstrap the production system.
 
+    cd ~
     wget https://github.com/FireworksProject/web_server/raw/master/toehold
+    source toehold
 
 That will install git, clone this repository from GitHub, and install the
 required Ubuntu packages with apt-get.
