@@ -28,11 +28,12 @@ main () {
     local coffeescript=$( coffee --version )
 
     if [ -z "$coffeescript" ]; then
+        echo "installing CoffeeScript"
         sudo npm install --global coffee-script
         coffeescript=$( coffee --version )
     fi
 
-    echo "$coffeescript installed"
+    echo "CoffeeScript installed"
 }
 
 install_node () {
