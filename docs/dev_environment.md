@@ -71,7 +71,9 @@ After copying your SSH key and config file, log onto the VM in an SSH terminal
 from your local host machine.  Then, use wget to grab the toehold script and
 bootstrap the production system.
 
+    cd ~
     wget https://github.com/FireworksProject/web_server/raw/master/toehold
+    source toehold
 
 That will install git, clone this repository from GitHub, and install the
 required Ubuntu packages with apt-get.
