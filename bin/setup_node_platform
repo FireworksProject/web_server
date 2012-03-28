@@ -5,6 +5,8 @@ LIBDIR="$ROOTDIR/lib"
 
 PLATFORM="/srv/http/platform.x"
 APPDIR="$PLATFORM/applications"
+PROXYDIR="$PLATFORM/proxy"
+FILESDIR="$PLATFORM/receiver"
 
 source "$LIBDIR/utils.sh"
 
@@ -14,5 +16,7 @@ source "$LIBDIR/utils.sh"
 sudo useradd --system --user-group nodeserver
 
 sudo mkdir --parents $APPDIR
+sudo mkdir --parents $PROXYDIR
+sudo mkdir --parents $FILESDIR
 sudo chown -R nodeserver:nodeserver $PLATFORM
 sudo chmod 770 $PLATFORM
