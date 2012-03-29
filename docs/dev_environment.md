@@ -104,21 +104,12 @@ where `$HOST_IP` is the IP address of your local host machine.
 
 Setup the Node.js Stack
 -----------------------
-On the VM do
-
-    bin/setup_node_platform
-
-This will install Node.js, CoffeeScript, and create the nodeserver user and
-permissions.
+Check out the `nodejs.md` docs.
 
 
 Setup CouchDB
 -------------
-On the VM do
-
-    bin/setup_couchdb
-
-This will install CouchDB and create the coucdb user and permissions.
+Check out the `couchdb.md` docs.
 
 
 Setup the LAMP Stack
@@ -139,3 +130,4 @@ the IP address of your running VM) and create the MySQL application user in the
 privileges tab.  Again, username and password probably does not need to be
 strong, but make sure to record it somewhere. This user should have all "data"
 and "structure" privileges.
+
